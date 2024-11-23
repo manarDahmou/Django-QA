@@ -1,41 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-
-<body>
-    <form method="POST" action="/emp">
-        {% csrf_token %}
+<form method="POST" action="/emp">
+    {% csrf_token %}
+    <div>
+        <br>
+        <p>
+            <h3>Enter Details</h3>
+        </p>
+        <div>
+            <p>Employee Id:</p>
+            {{ form.eid }}
+            {% if form.eid.errors %}
+                <ul>
+                    {% for error in form.eid.errors %}
+                        <li style="color:red">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div>
+            <p>Employee Name:</p>
+            {{ form.ename }}
+            {% if form.ename.errors %}
+                <ul>
+                    {% for error in form.ename.errors %}
+                        <li style="color:red">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div>
+            <p>Employee Email:</p>
+            {{ form.eemail }}
+            {% if form.eemail.errors %}
+                <ul>
+                    {% for error in form.eemail.errors %}
+                        <li style="color:red">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div>
+            <p>Employee Contact:</p>
+            {{ form.econtact }}
+            {% if form.econtact.errors %}
+                <ul>
+                    {% for error in form.econtact.errors %}
+                        <li style="color:red">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
         <div>
             <br>
-            <p>
-                <h3>Enter Details</h3>
-            </p>
-            <div>
-                <p>Employee Id:</p>{{ form.eid }}
-            </div>
-            <div>
-                <p>Employee Name::</p>{{ form.ename }}
-            </div>
-            <div>
-                <p>Employee Email:</p>{{ form.eemail }}
-            </div>
-            <div>
-                <p>Employee contact:</p>{{ form.econtact }}
-            </div>
-            <div>
-                <br>
-                <button type="submit">Submit</button>
-            </div>
+            <button type="submit">Submit</button>
         </div>
-    </form>
-</body>
-
-</html>
+    </div>
+</form>
